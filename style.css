@@ -43,25 +43,20 @@
   
   
   /* MEDIA QUERIES */
-  
-  @media only screen 
-    and (min-width: 375px) 
-    and (max-width: 668px){
-      
-  }
-  
   @media only screen 
     and (min-width: 768px) 
     and (max-width: 1024px)  {
       .the-info-window {
-        width: 512px;
+          width: 612px;
       }
   }
   
   @media screen 
     and (min-width: 1200px) 
     and (max-width: 1600px) { 
-      
+      .the-info-window {
+          width: 612px;
+      }
   }
   
   
