@@ -7,10 +7,8 @@ function getSwInfo(){
   let apiUrl = 'https://swapi.co/api/people/' + randomNumber
 
 //fetch api data
-  axios.get(apiUrl).then(response => {
+  axios.get(apiUrl).then(function(response) {
     updateInfo(response.data);
-  }).catch(e => {
-    console.log('There was an error');
   })
 }
 //up the name when the button is selected
