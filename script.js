@@ -1,19 +1,52 @@
-let button     = document.querySelector('#button')
-let name       = document.querySelector('#name')
-
-//getSwInfo is the ajax request
-function getSwInfo(){
-  let randomNumber = Math.floor((Math.random() * 88) + 1)
-  let apiUrl = 'https://swapi.co/api/people/' + randomNumber
-
-//fetch api data
-  axios.get(apiUrl).then(function(response) {
-    updateInfo(response.data);
+(function(){
+    //fadeInUp animation
+    var animation = "fadeInDown",
+      urlErrorCount = 0;
+  
+    //generate a random number
+   var runAjax = function() {
+     var num = Math.floor(Math.random() * 42 + 3);
+  
+    // reset animation
+   $(".output").removeClass(animation);
+  
+    //JSON call
+    $.ajax({
+      method: "GET",
+      url: "https://swapi.co/api/people/" + num + "/"
+    })
+    .done(function(data){
+      var name = data.name;
+    //html output
+      var output = 
+      "<article>" +
+      "<h1>" +
+      name +
+      "</h1>" +
+      "</article>";
+    //add html output
+    $(".output").html(output);
+  
+    //animate
+    $(".output").addClass("animated " + animation);
+    //console.log(output);
+  })//.done function close
+  .fail(function() {
+    
+    urlErrorCount++;
+    $(".output").html("Searching...");
+    console.log(
+      "path:" + num + " : url JSON missing data : " + urlErrorCount
+    );
+    runAjax();
   })
-}
-//up the name when the button is selected
-function updateInfo(data) {
-  name.innerText        = data.name
-}
-//listens for button to be clicked
-button.addEventListener('click', getSwInfo)
+  .always(function(){
+  
+   });
+  };
+  
+  
+    $('#button').on('click', function(){
+      runAjax();
+    });
+  })();
