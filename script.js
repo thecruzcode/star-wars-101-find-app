@@ -1,6 +1,6 @@
 (function(){
     //fadeInUp animation
-    var animation = "fadeInDown",
+    var animation = "fadeInUp",
       urlErrorCount = 0;
   
     //generate a random number
@@ -10,28 +10,55 @@
     // reset animation
    $(".output").removeClass(animation);
   
-    //JSON call
-    $.ajax({
-      method: "GET",
-      url: "https://swapi.co/api/people/" + num + "/"
-    })
-    .done(function(data){
-      var name = data.name;
-    //html output
-      var output = 
-      "<article>" +
-      "<h1>" +
-      name +
-      "</h1>" +
-      "</article>";
-    //add html output
-    $(".output").html(output);
+    //Fetch call
   
-    //animate
-    $(".output").addClass("animated " + animation);
-    //console.log(output);
-  })//.done function close
-  .fail(function() {
+   fetch("https://swapi.co/api/starships/" + num + "/")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(JSON.stringify(myJson));
+      done(myJson);
+    });
+  
+  
+    let done = (function(data){
+      var name = data.name,
+              model = data.model,
+              manufacturer = data.manufacturer,
+              length = data.length,
+              maxAtmospheringSpeed = data.max_atmosphering_speed;
+    
+            // html output
+            var output =
+              "<article>" +
+              "<h1>" +
+              name +
+              "</h1>" +
+              "<p><strong>Model</strong><br>" +
+              model +
+              "</p>" +
+              "<p><strong>Manufacturer:</strong><br>" +
+              manufacturer +
+              "</p>" +
+              "<p><strong>Length:</strong><br>" +
+              length +
+              "</p>" +
+              "<p><strong>Max Atmosphering Speed:</strong><br>" +
+              maxAtmospheringSpeed +
+              "</p>" +
+              "</article>";
+    
+            // add html output
+            $(".output").html(output);
+    
+            // animate
+            $(".output").addClass("animated " + animation);
+    
+            // console.log(output);
+          })
+  
+  let fail = (function() {
     
     urlErrorCount++;
     $(".output").html("Searching...");
@@ -40,7 +67,7 @@
     );
     runAjax();
   })
-  .always(function(){
+  let always = (function(){
   
    });
   };
@@ -50,3 +77,6 @@
       runAjax();
     });
   })();
+  
+  
+  
