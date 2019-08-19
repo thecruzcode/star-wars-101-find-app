@@ -5,8 +5,11 @@
   
     //generate a random number
    var runAjax = function() {
-     var num = Math.floor(Math.random() * 42 + 3);
+  //  var num = Math.floor(Math.random() * 42 + 3);
   
+  
+  let starshipsIds = [15, 5, 9, 10, 11, 12, 13, 21, 22, 23, 27, 28, 29, 31, 39, 40, 41, 43, 47, 48, 49, 3, 59, 61, 77, 17, 32, 52, 58, 63]; 
+  let num = starshipsIds[Math.floor(Math.random()* starshipsIds.length)];
     // reset animation
    $(".output").removeClass(animation);
   
@@ -22,7 +25,7 @@
     });
   
   
-    let done = (function(data){
+    let done = function(data){
       var name = data.name,
               model = data.model,
               manufacturer = data.manufacturer,
@@ -56,9 +59,9 @@
             $(".output").addClass("animated " + animation);
     
             // console.log(output);
-          })
+          }
   
-  let fail = (function() {
+  let fail = function() {
     
     urlErrorCount++;
     $(".output").html("Searching...");
@@ -66,10 +69,10 @@
       "path:" + num + " : url JSON missing data : " + urlErrorCount
     );
     runAjax();
-  })
-  let always = (function(){
+  }
+  let always = function(){
   
-   });
+   }
   };
   
   
