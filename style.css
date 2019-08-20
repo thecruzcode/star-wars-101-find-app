@@ -1,9 +1,13 @@
+
 * {
     box-sizing: border-box;
   }
   
   body {
     font-family: 'Open Sans', sans-serif;
+    background:url(https://wallpapercave.com/wp/wp3970817.jpg)no-repeat center;
+    height: 100vh;
+    width: 100vw;
   }
   
   section{
@@ -12,19 +16,22 @@
     margin: auto;
   }
   
-  .the-info-window {
+  #the-info-window {
       margin: auto;
-      height: 302px;
-      width: 270px;
-      border: 2px solid black;
+      height: 320px;
+      width: 300px;
+      border: 2px solid yellow;
       border-radius: 5px;
   }
   
-  #main-title {
-      text-align: center;
-      font-size: 16px;
-      margin-top: -20px;
-  }
+  .main-title {
+    position: relative;
+    font-size: 17px;
+    top: 0px;
+    color: yellow;
+    display: flex;
+    justify-content: center;
+}
   
   h1{
     padding-top: 40px;
@@ -34,13 +41,15 @@
       position: relative;
       top: -32px;
       font-size: 14px;
+      color: yellow;
+      font-weight: bolder;
       }
       
     
   #button {
-    background-color: gray;
+    background-color: yellow;
     border: none;
-    color: white;
+    color: whit#000;
     padding: 10px 32px;
     text-align: center;
     text-decoration: none;
@@ -50,7 +59,7 @@
     border-radius: 5px;
     width: 270px;
     position: relative;
-    top: 5px;
+    top: 10px;
     cursor: pointer;
   }
   
@@ -61,20 +70,35 @@
   
   
   /* MEDIA QUERIES */
-  @media only screen 
-    and (min-width: 768px) 
-    and (max-width: 1024px)  {
-      .the-info-window {
-      margin: auto;
-      width: 430px;
+  
+  @media screen
+    and (min-width: 834px) 
+    and (max-width: 1112px) {
+      #the-info-window {
+      width: 800px;
+      border: 2px solid yellow;
+      position: relative;
+      top: 73px;
+      }
+    
+    .main-title {
+      position: relative;
+      font-size: 27px;
+      top: 67px;
+    }
+  
+    #button {
+        top: 79px;
+    }
+  
+    article {
+      position: relative;
+      top: -17px;
+      font-size: 14px;
+      color: yellow;
+      font-weight: bolder;
+   }
   }
   
-  @media screen 
-    and (min-width: 1200px) 
-    and (max-width: 1600px) { 
-      /* .the-info-window {
-          width: 612px;
-      } */
-  }
   
   
